@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test API</title>
+  </head>
+  <body>
+    <h1>Test Registro y Login</h1>
+    <button id="registro">Registrar</button>
+    <button id="login">Login</button>
+    <pre id="output"></pre>
+
+    <script>
+      const output = document.getElementById("output");
+
+      document.getElementById("registro").addEventListener("click", () => {
+        const email = "test" + Date.now() + "@mail.com";
+        fetch("http://localhost:3000/registro", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user: email,
+            password: "1234",
+            nombre: "Test Usuario",
+          }),
+        })
+          .then((res) => res.json())
+          .then(
+            (data) =>
+              (output.textContent =
+                "Registro:\n" + JSON.stringify(data, null, 2))
+          );
+      });
+
+      document.getElementById("login").addEventListener("click", () => {
+        const email = prompt("Ingresa el email registrado");
+        fetch("http://localhost:3000/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ user: email, password: "1234" }),
+        })
+          .then((res) => res.json())
+          .then(
+            (data) =>
+              (output.textContent = "Login:\n" + JSON.stringify(data, null, 2))
+          );
+      });
+    </script>
+  </body>
+</html>
