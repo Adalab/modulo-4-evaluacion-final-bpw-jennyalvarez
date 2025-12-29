@@ -8,7 +8,7 @@ ENDPOINTS:
 
 1- Listar todos los libros
 Método: GET
-URL: /books
+URL: /books o /
 
 2- Crear un libro
 Método: POST
@@ -17,9 +17,9 @@ Body: JSON
 
 3- Actualizar un libro
 Método: PUT
-URL: /books/:id (se reemplazaría el :id por el ID del libro)
+URL: /books/:id (se reemplazaría el :id por el idbooks del libro)
 Body: JSON
 
 4- Eliminar un libro
 Método: DELETE
-URL: /books/:id (se reemplazaría el :id por el ID del libro)
+URL: /books/:id (se reemplazaría el :id por el idbooks del libro)
